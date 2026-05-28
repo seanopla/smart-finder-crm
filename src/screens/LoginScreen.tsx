@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 export default function LoginScreen({ navigation }: any) {
-  const [isRemembered, setIsRemembered] = useState(true);
+  const [isRemembered, setIsRemembered] = useState(false);
 
   return (
     <View style={styles.container}>

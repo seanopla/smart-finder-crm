@@ -25,7 +25,7 @@ const CustomInput = ({
     </Text>
     <View style={styles.inputContainer}>
       <View style={styles.iconBox}>
-        <Ionicons name={icon} size={18} color="#0047D3" />
+        <Ionicons name={icon} size={18} color="#206DF9" />
       </View>
       <TextInput
         style={styles.input}

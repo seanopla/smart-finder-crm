@@ -146,19 +146,21 @@ export default function DashboardScreen({ navigation }: any) {
               iconName="people"
               color="#2196F3"
               bgColor="#E3F2FD"
-              onPress={() => navigation.navigate("LeadList")} // NAVIGASI KE SINI
+              onPress={() => navigation.navigate("LeadList")}
             />
             <MenuItem
               title="Pipeline"
               iconName="funnel"
               color="#9C27B0"
               bgColor="#F3E5F5"
+              onPress={() => navigation.navigate("Pipeline")}
             />
             <MenuItem
               title="Follow Up"
               iconName="locate"
               color="#3F51B5"
               bgColor="#E8EAF6"
+              onPress={() => navigation.navigate("FollowUpList")}
             />
             <MenuItem
               title="Leads Saya"
@@ -203,12 +205,14 @@ export default function DashboardScreen({ navigation }: any) {
               iconName="hand-right"
               color="#F44336"
               bgColor="#FFEBEE"
+              onPress={() => navigation.navigate("RelationList")}
             />
             <MenuItem
               title="Aktivitas"
               iconName="calendar"
               color="#2196F3"
               bgColor="#E3F2FD"
+              onPress={() => navigation.navigate("ActivityList")}
             />
             <MenuItem
               title="Komunikasi"
@@ -221,6 +225,7 @@ export default function DashboardScreen({ navigation }: any) {
               iconName="gift"
               color="#9C27B0"
               bgColor="#F3E5F5"
+              onPress={() => navigation.navigate("PenawaranList")}
             />
           </View>
 
@@ -231,12 +236,14 @@ export default function DashboardScreen({ navigation }: any) {
               iconName="map"
               color="#00BCD4"
               bgColor="#E0F7FA"
+              onPress={() => navigation.navigate("JourneyList")}
             />
             <MenuItem
               title="Jadwal Visit"
               iconName="calendar-outline"
               color="#4CAF50"
               bgColor="#E8F5E9"
+              onPress={() => navigation.navigate("JadwalVisit")}
             />
             <MenuItem
               title="Appointment Baru"

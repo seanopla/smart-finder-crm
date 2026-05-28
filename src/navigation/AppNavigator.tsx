@@ -16,15 +16,35 @@ import DashboardScreen from "../screens/DashboardScreen";
 import { LeadProvider } from "../context/LeadContext";
 import LeadListScreen from "../screens/LeadListScreen";
 import AddLeadScreen from "../screens/AddLeadScreen";
+import PipelineScreen from "../screens/PipelineScreen";
+import FollowUpListScreen from "../screens/FollowUpListScreen";
+import InputFollowUpScreen from "../screens/InputFollowUpScreen";
+
+import { FollowUpProvider } from "../context/FollowUpContext";
+import { RelationProvider } from "../context/RelationContext";
+import RelationListScreen from "../screens/RelationListScreen";
+import AddRelasiScreen from "../screens/AddRelasiScreen";
+import { ActivityProvider } from "../context/ActivityContext";
+import ActivityListScreen from "../screens/ActivityListScreen";
+import AddActivityScreen from "../screens/AddActivityScreen";
+import { PenawaranProvider } from "../context/PenawaranContext";
+import PenawaranListScreen from "../screens/PenawaranListScreen";
+import AddPenawaranScreen from "../screens/AddPenawaranScreen";
+import { JourneyProvider } from "../context/JourneyContext";
+import JourneyListScreen from "../screens/JourneyListScreen";
+import AddJourneyScreen from "../screens/AddJourneyScreen";
+import OptimasiRouteScreen from "../screens/OptimasiRouteScreen";
+import { VisitProvider } from "../context/VisitContext";
+import JadwalVisitScreen from "../screens/JadwalVisitScreen";
+import IsiKunjunganScreen from "../screens/IsiKunjunganScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Komponen Khusus untuk Tab Tengah (Simulator)
 const CustomTabBarButton = ({ children, onPress }: any) => (
   <TouchableOpacity
     style={{
-      top: -30, // Membuat tombol sedikit naik ke atas
+      top: -30,
       justifyContent: "center",
       alignItems: "center",
       ...styles.shadow,
@@ -113,10 +133,9 @@ function BottomTabNavigator() {
           ),
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
           tabBarLabelStyle: {
-            color: "#ffffff", // Label simulator selalu biru di gambar
+            color: "#ffffff",
             marginTop: 0,
             fontSize: 10,
-            // fontWeight: "bold",
           },
         }}
       />
@@ -157,41 +176,132 @@ function BottomTabNavigator() {
 export default function AppNavigator() {
   return (
     <LeadProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
+      <FollowUpProvider>
+        <RelationProvider>
+          <ActivityProvider>
+            <PenawaranProvider>
+              <JourneyProvider>
+                <VisitProvider>
+                  <NavigationContainer>
+                    <Stack.Navigator screenOptions={{ headerShown: false }}>
+                      <Stack.Screen name="Login" component={LoginScreen} />
+                      <Stack.Screen
+                        name="MainTabs"
+                        component={BottomTabNavigator}
+                      />
 
-          {/* --- Native Header Diaktifkan Di Sini --- */}
-          <Stack.Screen
-            name="LeadList"
-            component={LeadListScreen}
-            options={{
-              headerShown: true,
-              title: "Lead Baru",
-              headerStyle: {
-                backgroundColor: "#0047D3",
-              },
-              headerTintColor: "#FFF",
-              headerTitleStyle: { fontSize: 16, fontWeight: "bold" },
-              animation: "slide_from_right",
-            }}
-          />
-          <Stack.Screen
-            name="AddLead"
-            component={AddLeadScreen}
-            options={{
-              headerShown: true,
-              title: "Lead Baru",
-              headerStyle: {
-                backgroundColor: "#0047D3",
-              },
-              headerTintColor: "#FFF",
-              headerTitleStyle: { fontSize: 16, fontWeight: "bold" },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+                      <Stack.Screen
+                        name="LeadList"
+                        component={LeadListScreen}
+                        options={{
+                          headerShown: true,
+                          title: "Lead Baru",
+                          headerStyle: {
+                            backgroundColor: "#0047D3",
+                          },
+                          headerTintColor: "#FFF",
+                          headerTitleStyle: {
+                            fontSize: 16,
+                            fontWeight: "bold",
+                          },
+                          animation: "slide_from_right",
+                        }}
+                      />
+                      <Stack.Screen
+                        name="AddLead"
+                        component={AddLeadScreen}
+                        options={{
+                          headerShown: true,
+                          title: "Lead Baru",
+                          headerStyle: {
+                            backgroundColor: "#0047D3",
+                          },
+                          headerTintColor: "#FFF",
+                          headerTitleStyle: {
+                            fontSize: 16,
+                            fontWeight: "bold",
+                          },
+                          animation: "slide_from_right",
+                        }}
+                      />
+                      <Stack.Screen
+                        name="Pipeline"
+                        component={PipelineScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="FollowUpList"
+                        component={FollowUpListScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="InputFollowUp"
+                        component={InputFollowUpScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="RelationList"
+                        component={RelationListScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="AddRelasi"
+                        component={AddRelasiScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="ActivityList"
+                        component={ActivityListScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="AddActivity"
+                        component={AddActivityScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="PenawaranList"
+                        component={PenawaranListScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="AddPenawaran"
+                        component={AddPenawaranScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="JourneyList"
+                        component={JourneyListScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="AddJourney"
+                        component={AddJourneyScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="OptimasiRoute"
+                        component={OptimasiRouteScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="JadwalVisit"
+                        component={JadwalVisitScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                      <Stack.Screen
+                        name="IsiKunjungan"
+                        component={IsiKunjunganScreen}
+                        options={{ animation: "slide_from_right" }}
+                      />
+                    </Stack.Navigator>
+                  </NavigationContainer>
+                </VisitProvider>
+              </JourneyProvider>
+            </PenawaranProvider>
+          </ActivityProvider>
+        </RelationProvider>
+      </FollowUpProvider>
     </LeadProvider>
   );
 }

@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context"; // ← tambah ini
 import { Ionicons } from "@expo/vector-icons";
 import { LeadContext } from "../context/LeadContext";
 
 export default function LeadListScreen({ navigation }: any) {
   const { leads } = useContext(LeadContext);
+  const insets = useSafeAreaInsets(); // ← tambah ini
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -38,53 +40,57 @@ export default function LeadListScreen({ navigation }: any) {
   const renderLeadCard = ({ item }: any) => (
     <View style={styles.card}>
       <View style={styles.cardHeader}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <View style={[styles.avatar, { backgroundColor: item.initialsBg }]}>
-            <Text style={[styles.avatarText, { color: item.initialsColor }]}>
-              {item.initials}
+        <View style={[styles.avatar, { backgroundColor: item.initialsBg }]}>
+          <Text style={[styles.avatarText, { color: item.initialsColor }]}>
+            {item.initials}
+          </Text>
+        </View>
+
+        <View style={styles.cardMiddle}>
+          <View style={styles.nameRow}>
+            <Text style={styles.name} numberOfLines={1}>
+              {item.name}
+            </Text>
+            {item.isNew && (
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>Baru</Text>
+              </View>
+            )}
+          </View>
+          <View style={styles.infoRow}>
+            <Ionicons name="call-outline" size={11} color="#9E9E9E" />
+            <Text style={styles.infoText} numberOfLines={1}>
+              {item.phone}
             </Text>
           </View>
-          <View style={{ marginLeft: 12 }}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={styles.name}>{item.name}</Text>
-              {item.isNew && (
-                <View style={styles.badge}>
-                  <Text style={styles.badgeText}>Baru</Text>
-                </View>
-              )}
-            </View>
-            <View style={styles.infoRow}>
-              <Ionicons name="call-outline" size={12} color="#757575" />
-              <Text style={styles.infoText}>{item.phone}</Text>
-            </View>
+          <View style={styles.infoRow}>
+            <Ionicons name="briefcase-outline" size={11} color="#9E9E9E" />
+            <Text style={styles.infoText} numberOfLines={1}>
+              {item.company}
+            </Text>
+          </View>
+          {/* Fix: amount dan lokasi dipisah baris agar tidak wrap aneh */}
+          <View style={styles.infoRow}>
+            <Ionicons name="cash-outline" size={11} color="#9E9E9E" />
+            <Text style={styles.infoText} numberOfLines={1}>
+              {item.amount}
+            </Text>
+            <Text style={styles.dotSep}>·</Text>
+            <Ionicons name="location-outline" size={11} color="#9E9E9E" />
+            <Text style={styles.infoTextFlex} numberOfLines={1}>
+              {item.location}
+            </Text>
           </View>
         </View>
-        <View style={{ alignItems: "flex-end" }}>
+
+        <View style={styles.cardRight}>
           <Text style={styles.timeText}>{item.time}</Text>
           <Ionicons
             name="ellipsis-vertical"
-            size={16}
-            color="#9E9E9E"
-            style={{ marginTop: 4 }}
+            size={14}
+            color="#BDBDBD"
+            style={{ marginTop: 6 }}
           />
-        </View>
-      </View>
-
-      <View style={styles.detailsRow}>
-        <View style={styles.detailItem}>
-          <Ionicons name="briefcase-outline" size={14} color="#757575" />
-          <Text style={styles.detailText}>{item.company}</Text>
-        </View>
-      </View>
-
-      <View style={[styles.detailsRow, { marginBottom: 12 }]}>
-        <View style={styles.detailItem}>
-          <Ionicons name="cash-outline" size={14} color="#757575" />
-          <Text style={styles.detailText}>{item.amount}</Text>
-        </View>
-        <View style={[styles.detailItem, { marginLeft: 15 }]}>
-          <Ionicons name="location-outline" size={14} color="#757575" />
-          <Text style={styles.detailText}>{item.location}</Text>
         </View>
       </View>
 
@@ -103,44 +109,40 @@ export default function LeadListScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
+      {/* Blue header extension with stats */}
       <View style={styles.headerExtension}>
         <View style={styles.statsContainer}>
           <View style={styles.statCard}>
             <View style={[styles.statIcon, { backgroundColor: "#EDE7F6" }]}>
-              <Ionicons name="people" size={14} color="#673AB7" />
+              <Ionicons name="people" size={13} color="#673AB7" />
             </View>
             <Text style={styles.statTitle}>TOTAL LEAD</Text>
-            <Text style={styles.statValue}>
-              128 <Text style={styles.statSub}>Leads</Text>
-            </Text>
+            <Text style={styles.statValue}>128</Text>
+            <Text style={styles.statSub}>Leads</Text>
           </View>
           <View style={styles.statCard}>
             <View style={[styles.statIcon, { backgroundColor: "#E8F5E9" }]}>
-              <Ionicons name="locate" size={14} color="#4CAF50" />
+              <Ionicons name="locate" size={13} color="#4CAF50" />
             </View>
             <Text style={styles.statTitle}>LEAD HARI INI</Text>
-            <Text style={styles.statValue}>
-              12 <Text style={styles.statSub}>Leads</Text>
-            </Text>
+            <Text style={styles.statValue}>12</Text>
+            <Text style={styles.statSub}>Leads</Text>
           </View>
           <View style={styles.statCard}>
             <View style={[styles.statIcon, { backgroundColor: "#FFF8E1" }]}>
-              <Ionicons name="time" size={14} color="#FFC107" />
+              <Ionicons name="time" size={13} color="#FFC107" />
             </View>
             <Text style={styles.statTitle}>BELUM DIASSIGN</Text>
-            <Text style={styles.statValue}>
-              8 <Text style={styles.statSub}>Leads</Text>
-            </Text>
+            <Text style={styles.statValue}>8</Text>
+            <Text style={styles.statSub}>Leads</Text>
           </View>
           <View style={styles.statCard}>
             <View style={[styles.statIcon, { backgroundColor: "#E3F2FD" }]}>
-              <Ionicons name="pie-chart" size={14} color="#1976D2" />
+              <Ionicons name="pie-chart" size={13} color="#1976D2" />
             </View>
             <Text style={styles.statTitle}>EST. PLAFOND</Text>
-            <Text style={styles.statValue}>
-              Rp12.45B <Text style={styles.statSub}>Plafond</Text>
-            </Text>
+            <Text style={styles.statValue}>Rp12.45B</Text>
+            <Text style={styles.statSub}>Plafond</Text>
           </View>
         </View>
       </View>
@@ -150,36 +152,39 @@ export default function LeadListScreen({ navigation }: any) {
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.tabsContainer}
+        contentContainerStyle={styles.tabsContent}
       >
         <Text style={styles.tabActive}>Semua Lead</Text>
         <Text style={styles.tabInactive}>Belum Diassign</Text>
-        <Text style={styles.tabInactive}>
-          Sumber Lead <Ionicons name="chevron-down" size={12} />
-        </Text>
-        <Text style={styles.tabInactive}>
-          Tanggal <Ionicons name="chevron-down" size={12} />
-        </Text>
+        <Text style={styles.tabInactive}>Sumber Lead</Text>
+        <Text style={styles.tabInactive}>Tanggal</Text>
       </ScrollView>
 
-      {/* List */}
+      {/* Lead List */}
       <FlatList
         data={leads}
         keyExtractor={(item) => item.id}
         renderItem={renderLeadCard}
-        contentContainerStyle={{ padding: 16, paddingBottom: 100 }}
+        // ← paddingBottom harus lebih dari tinggi bottom container + nav bar
+        contentContainerStyle={{
+          padding: 12,
+          paddingBottom: 100 + insets.bottom,
+        }}
         showsVerticalScrollIndicator={false}
       />
 
-      {/* Bottom Button */}
-      <View style={styles.bottomContainer}>
+      {/* Bottom — fix: tambah paddingBottom dari safe area */}
+      <View
+        style={[styles.bottomContainer, { paddingBottom: insets.bottom + 10 }]}
+      >
         <Text style={styles.bottomText}>
-          Menampilkan 1 - {leads.length} dari 128 lead
+          Menampilkan 1 – {leads.length} dari 128 lead
         </Text>
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => navigation.navigate("AddLead")}
         >
-          <Ionicons name="add" size={20} color="#FFF" />
+          <Ionicons name="add" size={18} color="#FFF" />
           <Text style={styles.addButtonText}>Tambah Lead Baru</Text>
         </TouchableOpacity>
       </View>
@@ -188,136 +193,194 @@ export default function LeadListScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F8F9FA" },
-  headerExtension: { backgroundColor: "#0047D3", paddingBottom: 60, zIndex: 1 },
+  container: { flex: 1, backgroundColor: "#F5F6FA" },
+
+  headerExtension: {
+    backgroundColor: "#0047D3",
+    paddingBottom: 52,
+  },
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     position: "absolute",
-    bottom: -40,
-    left: 16,
-    right: 16,
+    bottom: -36,
+    left: 12,
+    right: 12,
   },
   statCard: {
     backgroundColor: "#FFF",
-    width: "23%",
-    padding: 8,
-    borderRadius: 8,
+    width: "23.5%",
+    paddingVertical: 8,
+    paddingHorizontal: 6,
+    borderRadius: 10,
     elevation: 3,
     shadowColor: "#000",
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.08,
     shadowRadius: 4,
   },
   statIcon: {
-    width: 24,
-    height: 24,
+    width: 22,
+    height: 22,
     borderRadius: 6,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: 6,
   },
-  statTitle: { fontSize: 8, color: "#757575", fontWeight: "bold" },
-  statValue: { fontSize: 12, fontWeight: "bold", color: "#111", marginTop: 4 },
-  statSub: { fontSize: 8, color: "#9E9E9E", fontWeight: "normal" },
+  statTitle: {
+    fontSize: 7,
+    color: "#9E9E9E",
+    fontWeight: "700",
+    letterSpacing: 0.2,
+  },
+  statValue: { fontSize: 12, fontWeight: "800", color: "#111", marginTop: 2 },
+  statSub: { fontSize: 7, color: "#BDBDBD" },
+
   tabsContainer: {
-    flexDirection: "row",
-    marginTop: 60,
-    paddingHorizontal: 16,
+    marginTop: 48,
     borderBottomWidth: 1,
-    borderColor: "#EEE",
+    borderColor: "#EEEEEE",
+    backgroundColor: "#FFF",
+    flexGrow: 0,
+  },
+  tabsContent: {
+    paddingHorizontal: 14,
+    alignItems: "center",
   },
   tabActive: {
     color: "#0047D3",
-    fontWeight: "bold",
+    fontWeight: "700",
     borderBottomWidth: 2,
     borderColor: "#0047D3",
     paddingBottom: 10,
-    marginRight: 20,
+    paddingTop: 10,
+    marginRight: 18,
+    fontSize: 12,
   },
   tabInactive: {
     color: "#757575",
     paddingBottom: 10,
-    marginRight: 20,
+    paddingTop: 10,
+    marginRight: 18,
+    fontSize: 12,
   },
+  tabInactiveRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 18,
+    paddingBottom: 10,
+    paddingTop: 10,
+  },
+
   card: {
     backgroundColor: "#FFF",
-    padding: 16,
+    paddingHorizontal: 14,
+    paddingTop: 12,
+    paddingBottom: 10,
     borderRadius: 12,
-    marginBottom: 12,
+    marginBottom: 10,
     elevation: 1,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 3,
     borderWidth: 1,
     borderColor: "#F0F0F0",
   },
   cardHeader: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 12,
+    alignItems: "flex-start",
+    marginBottom: 8,
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     justifyContent: "center",
     alignItems: "center",
+    marginRight: 10,
+    marginTop: 2,
   },
-  avatarText: { fontSize: 16, fontWeight: "bold" },
-  name: { fontSize: 15, fontWeight: "bold", color: "#111" },
+  avatarText: { fontSize: 14, fontWeight: "700" },
+  cardMiddle: { flex: 1, overflow: "hidden" }, // ← overflow hidden cegah text keluar batas
+  cardRight: { alignItems: "flex-end", minWidth: 70 },
+
+  nameRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 3,
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: "#1A1A1A",
+    marginRight: 6,
+    flexShrink: 1,
+  },
   badge: {
     backgroundColor: "#E3F2FD",
     paddingHorizontal: 6,
-    paddingVertical: 2,
+    paddingVertical: 1,
     borderRadius: 4,
-    marginLeft: 8,
   },
-  badgeText: { color: "#0047D3", fontSize: 10, fontWeight: "bold" },
-  infoRow: { flexDirection: "row", alignItems: "center", marginTop: 4 },
-  infoText: { fontSize: 12, color: "#757575", marginLeft: 4 },
-  timeText: { fontSize: 10, color: "#9E9E9E" },
-  detailsRow: {
+  badgeText: { color: "#0047D3", fontSize: 9, fontWeight: "700" },
+
+  infoRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 4,
-    paddingLeft: 52,
+    marginTop: 2,
   },
-  detailItem: { flexDirection: "row", alignItems: "center" },
-  detailText: { fontSize: 12, color: "#757575", marginLeft: 6 },
+  infoText: { fontSize: 11, color: "#757575", marginLeft: 4, marginRight: 2 },
+  infoTextFlex: { fontSize: 11, color: "#757575", marginLeft: 4, flex: 1 }, // ← flex:1 agar teks lokasi tidak overflow
+  dotSep: { fontSize: 11, color: "#BDBDBD", marginHorizontal: 2 },
+  timeText: { fontSize: 10, color: "#BDBDBD" },
+
   footerRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 8,
-    paddingLeft: 52,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderColor: "#F5F5F5",
   },
-  sourceText: { fontSize: 11, color: "#1976D2", fontWeight: "600" },
-  priorityBadge: { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 4 },
-  priorityText: { fontSize: 10, fontWeight: "bold" },
+  sourceText: {
+    fontSize: 11,
+    color: "#1976D2",
+    fontWeight: "600",
+    flex: 1,
+    marginRight: 8,
+  },
+  priorityBadge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 5 },
+  priorityText: { fontSize: 10, fontWeight: "700" },
+
   bottomContainer: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     backgroundColor: "#FFF",
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 10,
     elevation: 10,
+    borderTopWidth: 1,
+    borderColor: "#EEEEEE",
   },
   bottomText: {
     textAlign: "center",
-    fontSize: 12,
-    color: "#757575",
-    marginBottom: 10,
+    fontSize: 11,
+    color: "#9E9E9E",
+    marginBottom: 8,
   },
   addButton: {
     backgroundColor: "#0047D3",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    padding: 14,
-    borderRadius: 8,
+    paddingVertical: 13,
+    borderRadius: 10,
   },
   addButtonText: {
     color: "#FFF",
-    fontWeight: "bold",
+    fontWeight: "700",
     fontSize: 14,
-    marginLeft: 8,
+    marginLeft: 6,
   },
 });
