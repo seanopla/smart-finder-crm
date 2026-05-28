@@ -28,11 +28,11 @@ const SmallStatCard = ({
 );
 
 // Komponen untuk 2 Kartu Lebar di bawahnya
-const WideStatCard = ({ title, value }: any) => (
-  <View style={styles.wideCard}>
+const WideStatCard = ({ title, value, cardBgColor, iconColor }: any) => (
+  <View style={[styles.wideCard, { backgroundColor: cardBgColor }]}>
     <View style={styles.wideCardHeader}>
-      <View style={[styles.cardIconWrapper, { backgroundColor: "#E3F2FD" }]}>
-        <Ionicons name="clipboard-outline" size={16} color="#1976D2" />
+      <View style={[styles.cardIconWrapper, { backgroundColor: "#FFFFFF" }]}>
+        <Ionicons name="clipboard-outline" size={18} color={iconColor} />
       </View>
     </View>
     <Text style={styles.cardTitle}>{title}</Text>
@@ -41,8 +41,8 @@ const WideStatCard = ({ title, value }: any) => (
 );
 
 // Komponen Menu
-const MenuItem = ({ title, iconName, color, bgColor }: any) => (
-  <TouchableOpacity style={styles.menuItem}>
+const MenuItem = ({ title, iconName, color, bgColor, onPress }: any) => (
+  <TouchableOpacity style={styles.menuItem} onPress={onPress}>
     <View style={[styles.menuIconWrapper, { backgroundColor: bgColor }]}>
       <Ionicons name={iconName} size={22} color={color} />
     </View>
@@ -52,7 +52,7 @@ const MenuItem = ({ title, iconName, color, bgColor }: any) => (
   </TouchableOpacity>
 );
 
-export default function DashboardScreen() {
+export default function DashboardScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -113,8 +113,18 @@ export default function DashboardScreen() {
             />
           </View>
           <View style={[styles.row, { marginTop: 12 }]}>
-            <WideStatCard title="AMOUNT SUBMISSION" value="Rp500.000.000" />
-            <WideStatCard title="TOTAL ONBOARDING" value="0" />
+            <WideStatCard
+              title="AMOUNT SUBMISSION"
+              value="Rp500.000.000"
+              cardBgColor="#F4F8FF"
+              iconColor="#0047D3"
+            />
+            <WideStatCard
+              title="TOTAL ONBOARDING"
+              value="0"
+              cardBgColor="#FFF9EE"
+              iconColor="#FF9800"
+            />
           </View>
         </View>
 
@@ -136,6 +146,7 @@ export default function DashboardScreen() {
               iconName="people"
               color="#2196F3"
               bgColor="#E3F2FD"
+              onPress={() => navigation.navigate("LeadList")} // NAVIGASI KE SINI
             />
             <MenuItem
               title="Pipeline"

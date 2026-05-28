@@ -13,6 +13,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 import LoginScreen from "../screens/LoginScreen";
 import DashboardScreen from "../screens/DashboardScreen";
+import { LeadProvider } from "../context/LeadContext";
+import LeadListScreen from "../screens/LeadListScreen";
+import AddLeadScreen from "../screens/AddLeadScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -153,12 +156,43 @@ function BottomTabNavigator() {
 
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <LeadProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="MainTabs" component={BottomTabNavigator} />
+
+          {/* --- Native Header Diaktifkan Di Sini --- */}
+          <Stack.Screen
+            name="LeadList"
+            component={LeadListScreen}
+            options={{
+              headerShown: true,
+              title: "Lead Baru",
+              headerStyle: {
+                backgroundColor: "#0047D3",
+              },
+              headerTintColor: "#FFF",
+              headerTitleStyle: { fontSize: 16, fontWeight: "bold" },
+              animation: "slide_from_right",
+            }}
+          />
+          <Stack.Screen
+            name="AddLead"
+            component={AddLeadScreen}
+            options={{
+              headerShown: true,
+              title: "Lead Baru",
+              headerStyle: {
+                backgroundColor: "#0047D3",
+              },
+              headerTintColor: "#FFF",
+              headerTitleStyle: { fontSize: 16, fontWeight: "bold" },
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </LeadProvider>
   );
 }
 
