@@ -127,7 +127,7 @@ export default function OptimasiRouteScreen({ navigation }: any) {
         </View>
       </View>
 
-      {/* SPLIT VIEW (Kiri: List, Kanan: Map) */}
+      {/* SPLIT VIEW */}
       <View style={styles.splitContainer}>
         {/* KOLOM KIRI: DAFTAR RUTE */}
         <View style={styles.leftListPane}>
@@ -534,7 +534,6 @@ const styles = StyleSheet.create({
     borderTopColor: "#EEEEEE",
   },
 
-  // BAGIAN KIRI
   leftListPane: {
     flex: 1.4,
     paddingLeft: 16,
@@ -590,7 +589,6 @@ const styles = StyleSheet.create({
   },
   durationText: { fontSize: 9, color: "#9E9E9E" },
 
-  // BAGIAN KANAN (MAP RUTE S-CURVE)
   rightMapPane: { flex: 1, backgroundColor: "#E1EFDB" },
   dummyMapBackground: { flex: 1, position: "relative", overflow: "hidden" },
   dummyRoad: { position: "absolute", backgroundColor: "#FFFFFF", opacity: 0.6 },
@@ -624,7 +622,6 @@ const styles = StyleSheet.create({
   },
   btnUbahManualText: { fontSize: 9, color: "#0047D3", fontWeight: "bold" },
 
-  // --- CSS MAGIC UNTUK GARIS BERKELOK ---
   snakeMapContainer: {
     position: "absolute",
     top: "15%",
@@ -635,7 +632,6 @@ const styles = StyleSheet.create({
   },
   snakeLineWrapper: { ...StyleSheet.absoluteFillObject },
 
-  // Segmen 1 (Lengkungan Kanan)
   curveRightFull: {
     flex: 1,
     borderColor: "#4285F4",
@@ -646,7 +642,6 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
   },
 
-  // Segmen 2 (Lengkungan Kiri)
   curveLeftFull: {
     flex: 1,
     borderColor: "#4285F4",
@@ -656,7 +651,6 @@ const styles = StyleSheet.create({
     marginTop: -4,
   },
 
-  // Segmen 3 (Lengkungan Kanan Bawah)
   curveRightOpenTop: {
     flex: 1,
     borderColor: "#4285F4",
@@ -666,7 +660,6 @@ const styles = StyleSheet.create({
     marginTop: -4,
   },
 
-  // Segmen Akhir
   curveLeftHalf: {
     flex: 0.5,
     borderColor: "#4285F4",
@@ -674,7 +667,6 @@ const styles = StyleSheet.create({
     marginTop: -4,
   },
 
-  // Node Setup Math
   nodeWrapper: {
     position: "absolute",
     width: 20,
@@ -699,7 +691,6 @@ const styles = StyleSheet.create({
   },
   mapNodeText: { fontSize: 9, fontWeight: "bold", color: "#FFF" },
 
-  // BOTTOM SECTION
   bottomContainer: {
     backgroundColor: "#FFF",
     borderTopWidth: 1,

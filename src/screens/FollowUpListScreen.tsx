@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0047D3",
     paddingBottom: 60,
     paddingHorizontal: 16,
-  }, // PaddingBottom ditambah agar muat stat card
+  },
   headerRow: { flexDirection: "row", alignItems: "center" },
   headerTitle: { color: "#FFF", fontSize: 18, fontWeight: "bold" },
   headerSubtitle: { color: "#E3F2FD", fontSize: 11, marginTop: 2 },
@@ -333,7 +333,6 @@ const styles = StyleSheet.create({
   tabText: { fontSize: 12, color: "#757575", fontWeight: "500" },
   tabTextActive: { color: "#0047D3", fontWeight: "bold" },
 
-  // Dropdown Row Styles Fixed
   dropdownRow: {
     flexDirection: "row",
     paddingHorizontal: 16,
@@ -353,7 +352,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     marginRight: 8,
   },
-  dropText: { fontSize: 9.5, color: "#333", flexShrink: 1, marginRight: 4 }, // flexShrink mencegah teks mendorong icon out of bounds
+  dropText: { fontSize: 9.5, color: "#333", flexShrink: 1, marginRight: 4 },
   filterIcon: {
     borderWidth: 1,
     borderColor: "#E0E0E0",

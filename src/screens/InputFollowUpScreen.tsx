@@ -403,7 +403,6 @@ export default function InputFollowUpScreen({ navigation }: any) {
         </TouchableOpacity>
       </View>
 
-      {/* MODAL BOTTOM SHEET (POP UP PILIHAN) */}
       <Modal
         visible={isModalVisible}
         transparent

@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context"; // ← tambah ini
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { LeadContext } from "../context/LeadContext";
 
 export default function LeadListScreen({ navigation }: any) {
   const { leads } = useContext(LeadContext);
-  const insets = useSafeAreaInsets(); // ← tambah ini
+  const insets = useSafeAreaInsets();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -69,7 +69,6 @@ export default function LeadListScreen({ navigation }: any) {
               {item.company}
             </Text>
           </View>
-          {/* Fix: amount dan lokasi dipisah baris agar tidak wrap aneh */}
           <View style={styles.infoRow}>
             <Ionicons name="cash-outline" size={11} color="#9E9E9E" />
             <Text style={styles.infoText} numberOfLines={1}>
@@ -165,7 +164,6 @@ export default function LeadListScreen({ navigation }: any) {
         data={leads}
         keyExtractor={(item) => item.id}
         renderItem={renderLeadCard}
-        // ← paddingBottom harus lebih dari tinggi bottom container + nav bar
         contentContainerStyle={{
           padding: 12,
           paddingBottom: 100 + insets.bottom,
@@ -300,7 +298,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   avatarText: { fontSize: 14, fontWeight: "700" },
-  cardMiddle: { flex: 1, overflow: "hidden" }, // ← overflow hidden cegah text keluar batas
+  cardMiddle: { flex: 1, overflow: "hidden" },
   cardRight: { alignItems: "flex-end", minWidth: 70 },
 
   nameRow: {
@@ -329,7 +327,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   infoText: { fontSize: 11, color: "#757575", marginLeft: 4, marginRight: 2 },
-  infoTextFlex: { fontSize: 11, color: "#757575", marginLeft: 4, flex: 1 }, // ← flex:1 agar teks lokasi tidak overflow
+  infoTextFlex: { fontSize: 11, color: "#757575", marginLeft: 4, flex: 1 },
   dotSep: { fontSize: 11, color: "#BDBDBD", marginHorizontal: 2 },
   timeText: { fontSize: 10, color: "#BDBDBD" },
 

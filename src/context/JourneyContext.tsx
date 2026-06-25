@@ -23,7 +23,6 @@ export const JourneyContext = createContext<JourneyContextProps>({
 });
 
 export const JourneyProvider = ({ children }: { children: ReactNode }) => {
-  // Data dummy awal disesuaikan persis dengan gambar pertama
   const [journeys, setJourneys] = useState<Journey[]>([
     {
       id: "1",

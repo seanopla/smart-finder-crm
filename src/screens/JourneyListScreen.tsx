@@ -33,7 +33,6 @@ export default function JourneyListScreen({ navigation }: any) {
   const filteredData = journeys.filter((j) => {
     if (j.isBreak) return true; // Break selalu dimunculkan di timeline
     return j.status === activeTab || activeTab === "Plan";
-    // Asumsi: Tab Plan memunculkan semua, atau sesuaikan dengan logika bisnis Anda
   });
 
   // Helper untuk warna badge Type (Meeting, Survey, dll)
@@ -267,7 +266,7 @@ export default function JourneyListScreen({ navigation }: any) {
             data={filteredData}
             keyExtractor={(item) => item.id}
             renderItem={renderTimelineItem}
-            scrollEnabled={false} // Dikendalikan oleh ScrollView utama
+            scrollEnabled={false}
           />
 
           {/* Tombol Tambah Kunjungan di akhir timeline */}
@@ -279,7 +278,7 @@ export default function JourneyListScreen({ navigation }: any) {
             <View style={styles.cardCol}>
               <TouchableOpacity
                 style={styles.btnAddDashed}
-                onPress={() => navigation.navigate("AddJourney")} // Menuju rute Tambah
+                onPress={() => navigation.navigate("AddJourney")}
               >
                 <Ionicons name="add" size={16} color="#0047D3" />
                 <Text style={styles.btnAddText}>Tambah Kunjungan</Text>

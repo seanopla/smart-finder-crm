@@ -14,7 +14,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { RelationContext } from "../context/RelationContext";
 
-// 1. PINDAHKAN KOMPONEN INI KE LUAR (Di atas AddRelasiScreen)
 const CustomInput = ({
   label,
   placeholder,
@@ -58,7 +57,6 @@ const CustomInput = ({
   </View>
 );
 
-// 2. PINDAHKAN KOMPONEN INI JUGA KE LUAR
 const SelectInput = ({ label, placeholder, value, onPress, required }: any) => (
   <View style={styles.inputWrap}>
     <Text style={styles.label}>

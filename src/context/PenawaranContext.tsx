@@ -26,7 +26,6 @@ export const PenawaranContext = createContext<PenawaranContextProps>({
 });
 
 export const PenawaranProvider = ({ children }: { children: ReactNode }) => {
-  // Data Dummy sesuai gambar list pertama
   const [penawaranList, setPenawaranList] = useState<Penawaran[]>([
     {
       id: "1",
@@ -103,7 +102,7 @@ export const PenawaranProvider = ({ children }: { children: ReactNode }) => {
   const addPenawaran = (data: Partial<Penawaran>) => {
     const newEntry: Penawaran = {
       id: Date.now().toString(),
-      date: "Hari Ini", // Untuk simulasi form nanti
+      date: "Hari Ini",
       icon: "document-text",
       iconColor: "#1976D2",
       iconBg: "#E3F2FD",

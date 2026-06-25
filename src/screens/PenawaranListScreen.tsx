@@ -218,7 +218,7 @@ export default function PenawaranListScreen({ navigation }: any) {
           data={filteredData}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
-          scrollEnabled={false} // Dikontrol oleh ScrollView utama
+          scrollEnabled={false}
           contentContainerStyle={{ paddingHorizontal: 16 }}
           ListEmptyComponent={
             <View style={{ alignItems: "center", marginTop: 40 }}>
@@ -230,10 +230,9 @@ export default function PenawaranListScreen({ navigation }: any) {
         />
       </ScrollView>
 
-      {/* FAB Buat Penawaran Baru */}
       <TouchableOpacity
         style={[styles.fab, { bottom: insets.bottom + 20 }]}
-        onPress={() => navigation.navigate("AddPenawaran")} // Rute untuk wizard form nanti
+        onPress={() => navigation.navigate("AddPenawaran")}
       >
         <Ionicons name="add" size={20} color="#FFF" />
         <Text style={styles.fabText}>Buat Penawaran Baru</Text>

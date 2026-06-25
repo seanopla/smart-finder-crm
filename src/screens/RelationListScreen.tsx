@@ -53,9 +53,7 @@ export default function RelationListScreen({ navigation }: any) {
 
     return (
       <View style={styles.card}>
-        {/* Tempat Gambar Profil (Bisa diganti source={require(...)} nanti) */}
         <View style={styles.avatarContainer}>
-          {/* <Image source={require('../../assets/dummy-profile.png')} style={styles.avatarImage} /> */}
           <Ionicons
             name={item.avatarPlaceholder as any}
             size={24}
@@ -93,7 +91,6 @@ export default function RelationListScreen({ navigation }: any) {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      {/* Header Sederhana */}
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -107,7 +104,6 @@ export default function RelationListScreen({ navigation }: any) {
           color="#111"
           style={{ marginLeft: "auto" }}
         />
-        {/* Tempat foto profil user di pojok kanan atas */}
         <View style={styles.headerAvatar}>
           <Ionicons name="person" size={16} color="#FFF" />
         </View>
@@ -115,12 +111,9 @@ export default function RelationListScreen({ navigation }: any) {
 
       <View style={styles.titleSection}>
         <Text style={styles.pageTitle}>Relasi Saya</Text>
-        <Text style={styles.pageSubtitle}>
-          Kelola dan pantau relasi atau kontak yang Anda miliki
-        </Text>
+        <Text style={styles.pageSubtitle}></Text>
       </View>
 
-      {/* Search Bar & Filter */}
       <View style={styles.searchRow}>
         <View style={styles.searchInputContainer}>
           <Ionicons
@@ -148,7 +141,6 @@ export default function RelationListScreen({ navigation }: any) {
         </TouchableOpacity> */}
       </View>
 
-      {/* Stats Cards Dinamis */}
       <View style={styles.statsRow}>
         <View style={styles.statCard}>
           <View style={[styles.statIconBg, { backgroundColor: "#FFEBEE" }]}>
@@ -180,7 +172,6 @@ export default function RelationListScreen({ navigation }: any) {
         </View>
       </View>
 
-      {/* List Header */}
       <View style={styles.listHeaderRow}>
         <Text style={styles.listTitle}>
           Daftar Relasi{" "}
@@ -197,7 +188,6 @@ export default function RelationListScreen({ navigation }: any) {
         </View>
       </View>
 
-      {/* List Content */}
       <FlatList
         data={filteredRelations}
         keyExtractor={(item) => item.id}
@@ -211,10 +201,9 @@ export default function RelationListScreen({ navigation }: any) {
         }
       />
 
-      {/* FAB: Tambah Relasi */}
       <TouchableOpacity
         style={[styles.fab, { bottom: insets.bottom + 20 }]}
-        onPress={() => navigation.navigate("AddRelasi")} // Pastikan rute ini nanti didaftarkan
+        onPress={() => navigation.navigate("AddRelasi")}
       >
         <Ionicons name="add" size={20} color="#FFF" />
         <Text style={styles.fabText}>Tambah Relasi</Text>

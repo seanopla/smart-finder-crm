@@ -12,7 +12,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 
-// --- KOMPONEN KUSTOM: TEXT AREA DENGAN COUNTER ---
 const TextAreaInput = ({ label, value, onChangeText, maxLength }: any) => (
   <View style={styles.inputWrap}>
     <Text style={styles.sectionTitle}>{label}</Text>
@@ -31,7 +30,6 @@ const TextAreaInput = ({ label, value, onChangeText, maxLength }: any) => (
   </View>
 );
 
-// --- KOMPONEN KUSTOM: CHECKBOX ---
 const CustomCheckbox = ({ label, isChecked, onPress }: any) => (
   <TouchableOpacity
     style={styles.checkboxContainer}
@@ -55,7 +53,6 @@ const CustomCheckbox = ({ label, isChecked, onPress }: any) => (
 export default function IsiKunjunganScreen({ navigation }: any) {
   const insets = useSafeAreaInsets();
 
-  // State Text Area (Pre-filled sesuai gambar mockup)
   const [ringkasan, setRingkasan] = useState(
     "Melakukan meeting dengan Bapak Andi selaku Direktur Keuangan. Pembahasan terkait kebutuhan tambahan modal kerja untuk pembelian bahan baku.",
   );
@@ -66,7 +63,6 @@ export default function IsiKunjunganScreen({ navigation }: any) {
     "Mengirimkan dokumen ke email RM paling lambat 27 Mei 2024.",
   );
 
-  // State Checkboxes (Multi-select)
   const [topik, setTopik] = useState<string[]>([
     "Pembahasan Kredit",
     "Review Limit",
@@ -91,8 +87,8 @@ export default function IsiKunjunganScreen({ navigation }: any) {
 
   // State Lampiran
   const [lampiran, setLampiran] = useState<any[]>([
-    { id: "1", type: "image_dummy", uri: "https://via.placeholder.com/150" }, // Dummy foto
-    { id: "2", type: "doc", name: "Dokumen Pendukung.pdf", size: "1.2 MB" }, // Dummy PDF
+    { id: "1", type: "image_dummy", uri: "https://via.placeholder.com/150" },
+    { id: "2", type: "doc", name: "Dokumen Pendukung.pdf", size: "1.2 MB" },
   ]);
 
   const handleAddLampiran = async () => {

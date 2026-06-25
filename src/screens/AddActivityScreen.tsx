@@ -12,7 +12,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ActivityContext } from "../context/ActivityContext";
 
-// 1. KOMPONEN INPUT DI LUAR (Mencegah bug keyboard tertutup)
 const SelectInput = ({
   label,
   placeholder,
@@ -86,7 +85,7 @@ export default function AddActivityScreen({ navigation }: any) {
   const { addActivity } = useContext(ActivityContext);
 
   // States Form Utama
-  const [jenisAktivitas, setJenisAktivitas] = useState("Telepon"); // Default aktif
+  const [jenisAktivitas, setJenisAktivitas] = useState("Telepon");
   const [tanggal, setTanggal] = useState("");
   const [waktu, setWaktu] = useState("");
   const [durasi, setDurasi] = useState("");
@@ -160,7 +159,7 @@ export default function AddActivityScreen({ navigation }: any) {
       desc: tujuan,
       pic: pic || "Tanpa Nama",
       company: perusahaan || "Perusahaan Umum",
-      date: tanggal ? tanggal.split(" ")[0] : "20", // Ambil angka tanggalnya saja untuk dummy kalender
+      date: tanggal ? tanggal.split(" ")[0] : "20",
       status: (status as any) || "Mendatang",
       icon: mIcon,
       iconColor: mColor,
@@ -199,7 +198,6 @@ export default function AddActivityScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      {/* HEADER PUTIH */}
       <View style={[styles.header, { paddingTop: insets.top + 10 }]}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -448,7 +446,6 @@ export default function AddActivityScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F8F9FA" },
 
-  // Header Style Putih
   header: {
     flexDirection: "row",
     alignItems: "center",

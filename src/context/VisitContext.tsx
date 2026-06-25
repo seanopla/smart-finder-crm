@@ -8,7 +8,7 @@ export interface Visit {
   product: string;
   address: string;
   pic: string;
-  date: string; // ex: '21'
+  date: string;
   statusTab: "Hari Ini" | "Minggu Ini" | "Mendatang";
   isBreak?: boolean;
 }
@@ -109,7 +109,7 @@ export const VisitProvider = ({ children }: { children: ReactNode }) => {
     const newEntry: Visit = {
       id: Date.now().toString(),
       statusTab: "Hari Ini",
-      date: "21", // Dummy default date
+      date: "21",
       ...data,
     } as Visit;
     setVisits([...visits, newEntry]);

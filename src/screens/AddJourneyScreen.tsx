@@ -14,7 +14,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { JourneyContext } from "../context/JourneyContext";
 
-// --- KOMPONEN INPUT REUSABLE ---
 const SelectInput = ({
   label,
   placeholder,
@@ -81,7 +80,6 @@ const TextAreaInput = ({
   </View>
 );
 
-// Komponen Input Khusus untuk Lokasi dengan tombol "Pilih di Peta"
 const LocationInput = ({
   label,
   placeholder,
@@ -142,7 +140,7 @@ export default function AddJourneyScreen({ navigation }: any) {
   const [agenda, setAgenda] = useState("");
   const [lokasi, setLokasi] = useState("");
 
-  const [rm, setRm] = useState("Rizky Pratama"); // Default seperti di gambar
+  const [rm, setRm] = useState("Rizky Pratama"); 
   const [metode, setMetode] = useState("");
   const [prioritas, setPrioritas] = useState("");
   const [catatan, setCatatan] = useState("");
@@ -224,7 +222,6 @@ export default function AddJourneyScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      {/* HEADER PUTIH */}
       <View style={[styles.header, { paddingTop: insets.top + 10 }]}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}

@@ -10,7 +10,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LeadContext } from "../context/LeadContext";
 
-// Komponen Input Kustom (Agar kode rapi)
 const CustomInput = ({
   label,
   icon,

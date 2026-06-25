@@ -7,7 +7,7 @@ export interface Activity {
   desc: string;
   pic: string;
   company: string;
-  date: string; // Format sederhana, misal: '20' (tanggal)
+  date: string;
   status: "Hari Ini" | "Mendatang" | "Selesai" | "Overdue";
   icon: string;
   iconColor: string;
@@ -96,7 +96,7 @@ export const ActivityProvider = ({ children }: { children: ReactNode }) => {
   const addActivity = (data: Partial<Activity>) => {
     const newEntry: Activity = {
       id: Date.now().toString(),
-      date: "20", // Default dummy
+      date: "20",
       status: "Hari Ini",
       icon: "call",
       iconColor: "#1976D2",

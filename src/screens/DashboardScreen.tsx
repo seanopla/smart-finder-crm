@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-// Komponen untuk 4 Kartu Kecil di atas
 const SmallStatCard = ({
   title,
   value,
@@ -27,7 +26,6 @@ const SmallStatCard = ({
   </View>
 );
 
-// Komponen untuk 2 Kartu Lebar di bawahnya
 const WideStatCard = ({ title, value, cardBgColor, iconColor }: any) => (
   <View style={[styles.wideCard, { backgroundColor: cardBgColor }]}>
     <View style={styles.wideCardHeader}>
@@ -40,7 +38,6 @@ const WideStatCard = ({ title, value, cardBgColor, iconColor }: any) => (
   </View>
 );
 
-// Komponen Menu
 const MenuItem = ({ title, iconName, color, bgColor, onPress }: any) => (
   <TouchableOpacity style={styles.menuItem} onPress={onPress}>
     <View style={[styles.menuIconWrapper, { backgroundColor: bgColor }]}>
@@ -318,7 +315,7 @@ const styles = StyleSheet.create({
     borderColor: "#0047D3",
   },
 
-  statsContainer: { paddingHorizontal: 16, marginTop: -70 }, // Membuat efek melayang
+  statsContainer: { paddingHorizontal: 16, marginTop: -70 },
   row: { flexDirection: "row", justifyContent: "space-between" },
   smallCard: {
     backgroundColor: "#FFF",

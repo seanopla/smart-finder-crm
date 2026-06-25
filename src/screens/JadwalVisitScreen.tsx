@@ -213,7 +213,6 @@ export default function JadwalVisitScreen({ navigation }: any) {
                   style={[styles.dateCard, isActive && styles.dateCardActive]}
                   onPress={() => setSelectedDate(item.date)}
                 >
-                  {/* FIX UTAMA: Mengubah warna hari menjadi putih (#FFF) saat dipilih agar tidak hilang */}
                   <Text
                     style={[
                       styles.dateDay,
@@ -461,7 +460,6 @@ const styles = StyleSheet.create({
   },
   detailText: { fontSize: 11, color: "#757575", flex: 1, lineHeight: 15 },
 
-  // Posisi Tombol Disesuaikan Agar Teks Tidak Tertabrak
   btnIsiKunjungan: {
     marginTop: 10,
     alignSelf: "flex-start",

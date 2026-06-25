@@ -12,7 +12,6 @@ import {
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-// Data Dummy Pipeline
 const PIPELINE_DATA = [
   {
     id: "1",
@@ -141,7 +140,6 @@ const PIPELINE_DATA = [
 export default function PipelineScreen({ navigation }: any) {
   const [expandedId, setExpandedId] = useState<string>("1");
 
-  // Hook untuk mendapatkan area aman (Status Bar)
   const insets = useSafeAreaInsets();
 
   const toggleExpand = (id: string) => {
@@ -151,7 +149,6 @@ export default function PipelineScreen({ navigation }: any) {
 
   return (
     <View style={styles.container}>
-      {/* 1. CUSTOM HEADER BIRU (Aman dari Status Bar) */}
       <View style={[styles.blueHeader, { paddingTop: insets.top + 15 }]}>
         <View style={styles.headerRow}>
           <TouchableOpacity
@@ -184,7 +181,6 @@ export default function PipelineScreen({ navigation }: any) {
         </View>
       </View>
 
-      {/* 2. STATS CARDS (Negative Margin agar melayang, bukan absolute) */}
       <View style={styles.statsWrapper}>
         <View style={styles.statCard}>
           <View style={styles.statHeader}>
@@ -271,7 +267,6 @@ export default function PipelineScreen({ navigation }: any) {
         </View>
       </View>
 
-      {/* 3. FILTER ROW */}
       <View style={styles.filterRow}>
         <TouchableOpacity style={styles.filterBtn}>
           <Text style={styles.filterText}>Semua Produk</Text>
@@ -293,7 +288,6 @@ export default function PipelineScreen({ navigation }: any) {
         </TouchableOpacity>
       </View>
 
-      {/* 4. ACCORDION LIST DENGAN TIMELINE FIX */}
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContainer}
@@ -304,7 +298,6 @@ export default function PipelineScreen({ navigation }: any) {
 
           return (
             <View key={item.id} style={styles.accordionContainer}>
-              {/* Timeline Header Row */}
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => toggleExpand(item.id)}
@@ -313,7 +306,6 @@ export default function PipelineScreen({ navigation }: any) {
                   isExpanded && styles.accordionRowActive,
                 ]}
               >
-                {/* Kolom Kiri: Ikon & Garis Timeline */}
                 <View style={styles.timelineCol}>
                   {!isLast && <View style={styles.timelineLine} />}
                   <View
@@ -330,7 +322,6 @@ export default function PipelineScreen({ navigation }: any) {
                   </View>
                 </View>
 
-                {/* Kolom Tengah: Teks Deskripsi */}
                 <View style={styles.textCol}>
                   <Text style={[styles.accordionTitle, { color: item.color }]}>
                     {item.title}
@@ -344,7 +335,6 @@ export default function PipelineScreen({ navigation }: any) {
                   </Text>
                 </View>
 
-                {/* Kolom Kanan: Angka & Panah */}
                 <View style={styles.rightCol}>
                   <View style={styles.countBadge}>
                     <Text style={styles.countText}>{item.count}</Text>
@@ -357,10 +347,8 @@ export default function PipelineScreen({ navigation }: any) {
                 </View>
               </TouchableOpacity>
 
-              {/* Konten Expandable (Kartu Horizontal) */}
               {isExpanded && item.items.length > 0 && (
                 <View style={styles.expandedContent}>
-                  {/* Garis timeline penghubung di area konten */}
                   {!isLast && <View style={styles.expandedTimelineLine} />}
 
                   <ScrollView
@@ -424,7 +412,6 @@ export default function PipelineScreen({ navigation }: any) {
                       </View>
                     ))}
 
-                    {/* Kartu Lihat Semua */}
                     <TouchableOpacity style={styles.viewAllCard}>
                       <View style={styles.viewAllCircle}>
                         <Ionicons name="add" size={24} color="#1976D2" />
@@ -446,7 +433,6 @@ export default function PipelineScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#FFFFFF" },
 
-  // Header Style Fix
   blueHeader: {
     backgroundColor: "#0047D3",
     paddingBottom: 60,
@@ -462,7 +448,6 @@ const styles = StyleSheet.create({
   headerSubtitle: { color: "#E3F2FD", fontSize: 11, marginTop: 2 },
   headerIcons: { flexDirection: "row", alignItems: "center" },
 
-  // Stats Cards Fix (Menggunakan Margin Negatif)
   statsWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -503,7 +488,6 @@ const styles = StyleSheet.create({
   },
   statSub: { fontSize: 8, color: "#9E9E9E" },
 
-  // Filter Row
   filterRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -528,14 +512,12 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
 
-  // Accordion & Timeline Strict Layout Fix
   listContainer: { paddingHorizontal: 16, paddingTop: 10 },
   accordionContainer: { position: "relative" },
 
   accordionRow: { flexDirection: "row", paddingVertical: 12, borderRadius: 12 },
-  accordionRowActive: { backgroundColor: "#F8FAFC" }, // Highlight tipis saat dibuka
+  accordionRowActive: { backgroundColor: "#F8FAFC" },
 
-  // Kolom Garis & Icon (Width dilock agar tidak bergeser)
   timelineCol: { width: 44, alignItems: "center", position: "relative" },
   timelineIconBg: {
     width: 36,
@@ -571,7 +553,6 @@ const styles = StyleSheet.create({
   },
   countText: { color: "#0047D3", fontSize: 11, fontWeight: "bold" },
 
-  // Area Expandable
   expandedContent: { position: "relative", paddingBottom: 15 },
   expandedTimelineLine: {
     position: "absolute",

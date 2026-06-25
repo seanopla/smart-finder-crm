@@ -16,7 +16,6 @@ import * as ImagePicker from "expo-image-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { PenawaranContext } from "../context/PenawaranContext";
 
-// --- KOMPONEN INPUT REUSABLE ---
 const CustomInput = ({
   label,
   placeholder,
@@ -107,7 +106,6 @@ const TextAreaInput = ({
   </View>
 );
 
-// Komponen Helper untuk list key-value di Review
 const DetailRow = ({ label, value, boldValue }: any) => (
   <View style={{ flexDirection: "row", marginBottom: 6 }}>
     <Text style={{ flex: 1, fontSize: 10, color: "#757575" }}>{label}</Text>
@@ -131,7 +129,7 @@ export default function AddPenawaranScreen({ navigation }: any) {
   const [step, setStep] = useState(1);
 
   // States Step 1
-  const [nasabah, setNasabah] = useState("PT Maju Jaya"); // Pre-filled untuk UI mockup
+  const [nasabah, setNasabah] = useState("PT Maju Jaya");
   const [pic, setPic] = useState("Budi Santoso");
   const [nohp, setNohp] = useState("0812 1234 5678");
   const [email, setEmail] = useState("budi.santoso@majujaya.co.id");
@@ -328,7 +326,6 @@ export default function AddPenawaranScreen({ navigation }: any) {
         contentContainerStyle={{ padding: 16, paddingBottom: 100 }}
       >
         {step === 1 && (
-          // (STEP 1 TETAP SAMA KARENA SUDAH SESUAI)
           <View>
             <View style={styles.card}>
               <Text style={styles.sectionTitle}>Informasi Nasabah</Text>
@@ -470,7 +467,6 @@ export default function AddPenawaranScreen({ navigation }: any) {
         )}
 
         {step === 2 && (
-          // (STEP 2 TETAP SAMA KARENA SUDAH SESUAI)
           <View>
             <View style={styles.card}>
               <Text style={styles.sectionTitle}>Detail Produk</Text>
@@ -1530,7 +1526,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 
-  // --- STYLES BARU UNTUK STEP 3 & 4 ---
   simTabContainer: {
     flexDirection: "row",
     borderWidth: 1,

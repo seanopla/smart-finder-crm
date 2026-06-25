@@ -7,7 +7,7 @@ export interface Relation {
   company: string;
   type: "Nasabah" | "Prospek" | "Mitra";
   date: string;
-  avatarPlaceholder: string; // Ikon sementara jika gambar belum ada
+  avatarPlaceholder: string;
 }
 
 interface RelationContextProps {

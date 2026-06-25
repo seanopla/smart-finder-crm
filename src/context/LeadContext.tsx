@@ -41,7 +41,6 @@ export const LeadContext = createContext<LeadContextProps>({
 });
 
 export const LeadProvider = ({ children }: { children: ReactNode }) => {
-  // Data Dummy Awal
   const [leads, setLeads] = useState<Lead[]>([
     {
       id: "1",
@@ -105,7 +104,7 @@ export const LeadProvider = ({ children }: { children: ReactNode }) => {
     const newLead: Lead = {
       id: Date.now().toString(),
       initials: initials.toUpperCase(),
-      initialsBg: "#FFF3E0", // Default warna
+      initialsBg: "#FFF3E0",
       initialsColor: "#F57C00",
       isNew: true,
       time: "Baru saja",
